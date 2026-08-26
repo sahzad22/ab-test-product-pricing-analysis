@@ -17,3 +17,9 @@ jobs:
       - run: python src/generate_experiment.py
       - run: pytest -q
       - run: python src/analyze_experiment.py
+      - name: Verify analysis outputs
+        run: |
+          test -f analysis/variant_summary.csv
+          test -f analysis/segment_results.csv
+          test -f analysis/experiment_metrics.csv
+          test -f analysis/conversion_rate.png
